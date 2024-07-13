@@ -1,67 +1,76 @@
-group 'orange.hrm.luisa'
-version '1.0-SNAPSHOT'
-
-
-description = 'Automatización Reto Choucair Testing'
-apply plugin: 'groovy'
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'application'
-apply plugin: 'java-library'
-apply plugin: 'jacoco'
-apply plugin: 'maven-publish'
-apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
+apply plugin: "io.freefair.lombok"
 
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
-def versionSerenity = '4.0.19'
-def versionCucumber = '7.6.0'
+description = 'Automatizacion Reto Choucair'
+group = 'co.com.choucair.orangehrm.luisaferp'
+version = '1.0-SNAPSHOT'
+
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 buildscript {
     repositories {
+        flatDir {
+            dirs("libs")
+        }
         mavenCentral()
-    }
-
-}
-buildscript {
-    repositories {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:4.0.19"
+        classpath("net.serenity-bdd:serenity-gradle-plugin:3.4.2")
+        classpath("io.freefair.gradle:lombok-plugin:6.5.0.3")
     }
 }
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+ext {
+    serenityVersion = '4.0.43'
+    serenityCucumberVersion = '4.0.43'
+    bonigarcia = '5.6.3'
+    seleniumJava = '4.11.0'
+    slf4jSimple = '2.0.9'
+    log4jCore = '2.17.1'
+    ssertjCore = '3.22.0'
+}
+
 dependencies {
-    dependencies {
-        implementation "net.serenity-bdd:serenity-cucumber:${versionSerenity}"
-        implementation group: 'io.cucumber', name: 'datatable', version: "${versionCucumber}"
-        testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: "${versionCucumber}"
-        implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "${versionSerenity}"
-        implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: "${versionSerenity}"
-        implementation group: 'net.serenity-bdd', name: 'serenity-junit', version: "${versionSerenity}"
-        implementation group: 'net.serenity-bdd', name: 'serenity-core', version: "${versionSerenity}"
-        implementation group: 'net.serenity-bdd', name: 'serenity-report-resources', version: "${versionSerenity}"
-        implementation group: 'org.mockito', name: 'mockito-core', version: '3.12.4'
-        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2'
-
-        implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.1'
-        implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.1'
-        compileOnly 'org.projectlombok:lombok:1.18.20'
-        annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    }
-
+    implementation "io.github.bonigarcia:webdrivermanager:${bonigarcia}"
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    implementation "org.assertj:assertj-core:${ssertjCore}"
+    testImplementation "org.slf4j:slf4j-simple:${slf4jSimple}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jCore}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumJava}"
+    implementation "org.seleniumhq.selenium:selenium-chrome-driver:${seleniumJava}"
 }
+
 test {
-    useJUnit {
-        include "**/*";
-        gradle.startParameter.continueOnFailure = true
-        testLogging.showStandardStreams = true
-        systemProperties System.getProperties()
-        systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
-    }
+
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    systemProperty "env", "stg"
+    systemProperties 'file.encoding': 'UTF-8'
+    maxParallelForks = 10
 
 }
+serenity {
+    requirementsDir = "src/test/resources/features"
+    reports = ["single-page-html", "navigator"]
+}
+
+
+allprojects {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+}
+
+gradle.startParameter.continueOnFailure = true
