@@ -1,5 +1,6 @@
 #language: es
 
+@Regresion
 Característica: Creación de contratación en OrangeHRM
 
   Yo como usuario quiero ingresar a OrangeHRM para realizar una contratacion
@@ -20,4 +21,4 @@ Característica: Creación de contratación en OrangeHRM
 
     Ejemplos:
       | usuario | contrasenna | nombre | segundoNombre | apellido | email                   | vacante                  | numeroTelefonico | palabraClave        | fecha_inicio | notas  | mensajeRegistro | estadoAplicacion              |
-      | Admin   | admin123    | Louisa | Andrea        | Sanchez  | louisafer2024@gmail.com | Junior Account Assistant | 3003019900       | Analista de Pruebas | 2000-19-07   | Junior |                 | Status: Application Initiated |
+      | Admin   | admin123    | Louisa | Andrea        | Perez    | louisafer2024@gmail.com | Junior Account Assistant | 3003019900       | Analista de Pruebas | 2000-19-07   | Junior |                 | Status: Application Initiated |
