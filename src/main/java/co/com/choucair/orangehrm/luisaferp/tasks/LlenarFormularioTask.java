@@ -1,10 +1,11 @@
 package co.com.choucair.orangehrm.luisaferp.tasks;
 
+import co.com.choucair.orangehrm.luisaferp.interactions.CargarDocumento;
 import co.com.choucair.orangehrm.luisaferp.interactions.SeleccionarVacante;
+import co.com.choucair.orangehrm.luisaferp.utils.MetodosUtilitarios;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import net.serenitybdd.screenplay.actions.Clear;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SendKeys;
@@ -32,6 +33,7 @@ public class LlenarFormularioTask implements Task {
                 SeleccionarVacante.opcion(testData.get(VACANTE)),
                 Enter.theValue(testData.get(EMAIL)).into(TXT_CORREO),
                 Enter.theValue(testData.get(NUMERO_TELEFONO)).into(TXT_NUMERO_TELEFONO),
+                CargarDocumento.docPdfTxtWord(MetodosUtilitarios.rutaArchivo()),
                 Enter.theValue(testData.get(PALABRA_CLAVE)).into(TXT_PALABRA_CLAVE),
                 SendKeys.of(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE).into(TXT_FECHA_APLICACION),
                 Enter.theValue(testData.get(FECHA_INICIO)).into(TXT_FECHA_APLICACION).thenHit(Keys.TAB),

@@ -3,7 +3,6 @@ package co.com.choucair.orangehrm.luisaferp.interactions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SendKeys;
 import org.openqa.selenium.Keys;
 
