@@ -15,10 +15,12 @@ Característica: Creación de contratación en OrangeHRM
       | nombre   | segundoNombre   | apellido   | email   | vacante   | numeroTelefonico   | palabraClave   | fechaInicio   | notas   |
       | <nombre> | <segundoNombre> | <apellido> | <email> | <vacante> | <numeroTelefonico> | <palabraClave> | <fechaInicio> | <notas> |
     Y guardo los detalles de la nueva contratacion
+      | entrevista   | entrevistador   | fechaInicio   |
+      | <entrevista> | <entrevistador> | <fechaInicio> |
     Entonces verifico que la nueva contratacion se ha agregado correctamente
-      | mensajeRegistro   | estadoAplicacion   | nombre   |
-      | <mensajeRegistro> | <estadoAplicacion> | <nombre> |
+      | estado   |
+      | <estado> |
 
     Ejemplos:
-      | usuario | contrasenna | nombre | segundoNombre | apellido | email                   | vacante                  | numeroTelefonico | palabraClave | fechaInicio | notas              | mensajeRegistro | estadoAplicacion              |
-      | Admin   | admin123    | Louisa | Andrea        | Perez    | louisafer2024@gmail.com | Junior Account Assistant | 3003019900       | QA           | 2000-19-07  | Postulacion Junior |                 | Status: Application Initiated |
+      | usuario | contrasenna | nombre | segundoNombre | apellido | email                   | vacante               | numeroTelefonico | palabraClave | fechaInicio | notas              | entrevista      | entrevistador  | estado |
+      | Admin   | admin123    | Louisa | Andrea        | Perez    | louisafer2024@gmail.com | Payroll Administrator | 3003019900       | QA           | 2000-19-07  | Postulacion Junior | ChoucairTesting | Charles Carter | Hired  |
