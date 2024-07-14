@@ -68,3 +68,8 @@ Entonces verifico que la nueva contratación se ha agregado correctamente
 | usuario | contrasenna | nombre | segundoNombre | apellido | email                   | vacante               | numeroTelefonico | palabraClave | fechaInicio | notas              | entrevista      | entrevistador  | estado |
 |---------|-------------|--------|---------------|----------|-------------------------|-----------------------|------------------|--------------|-------------|--------------------|-----------------|----------------|--------|
 | Admin   | admin123    | Louisa | Andrea        | Perez    | louisafer2024@gmail.com | Payroll Administrator | 3003019900       | QA           | 2000-19-07  | Postulacion Junior | ChoucairTesting | Charles Carter | Hired  |
+
+
+# EVIDENCIA DEL TEST EJECUTADO:
+
+![image](https://github.com/user-attachments/assets/6b8b96e9-41f3-4fa7-ba4b-ac42fbbbb731)
