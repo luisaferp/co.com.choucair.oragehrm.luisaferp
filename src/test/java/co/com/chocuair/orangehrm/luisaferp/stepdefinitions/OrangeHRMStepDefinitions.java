@@ -1,8 +1,6 @@
 package co.com.chocuair.orangehrm.luisaferp.stepdefinitions;
 
-import co.com.choucair.orangehrm.luisaferp.tasks.AbrirTask;
-import co.com.choucair.orangehrm.luisaferp.tasks.CargarDatosTask;
-import co.com.choucair.orangehrm.luisaferp.tasks.IniciarSesionTask;
+import co.com.choucair.orangehrm.luisaferp.tasks.*;
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -19,6 +17,7 @@ public class OrangeHRMStepDefinitions {
     public void iniciarSesion(){
         OnStage.setTheStage(new OnlineCast());
     }
+
     @Dado("que el Usuario ingresa a OrangeHRM")
     public void queElUsuarioIngresaAOrangeHRM() {
         OnStage.theActorCalled("Luisa").wasAbleTo(AbrirTask.paginaOrangeHrm());
@@ -32,14 +31,16 @@ public class OrangeHRMStepDefinitions {
 
     @Y("navego a la seccion Recruitment para luego dar clic en el botón +Add")
     public void navegoALaSeccionRecruitmentParaLuegoDarClicEnElBotónAdd() {
+        OnStage.theActorInTheSpotlight().attemptsTo(NavegarTask.buscarFormulario());
     }
 
     @Y("completo el formulario de contratacion con")
-    public void completoElFormularioDeContratacionCon() {
+    public void completoElFormularioDeContratacionCon(List<Map<String, String>> testData) {
+        OnStage.theActorInTheSpotlight().attemptsTo(LlenarFormularioTask.aspirante(testData.get(0)));
     }
-
     @Y("guardo los detalles de la nueva contratacion")
     public void guardoLosDetallesDeLaNuevaContratacion() {
+        OnStage.theActorInTheSpotlight().attemptsTo(GuardarTask.postulacion());
     }
 
     @Entonces("verifico que la nueva contratacion se ha agregado correctamente")
