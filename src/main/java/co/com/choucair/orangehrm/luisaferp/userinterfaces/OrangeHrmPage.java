@@ -21,8 +21,7 @@ public class OrangeHrmPage {
     public static final Target CHBX_CONSENTIMIENTO = Target.the("Aceptar consentimiento").located(By.xpath("//i[@class='oxd-icon bi-check oxd-checkbox-input-icon']"));
     public static final Target BTN_GUARDAR = Target.the("Guardar Postulacion").located(By.xpath("//button[@type='submit']"));
     public static final Target BTN_LISTA_CANDIDATOS = Target.the("Participante Guardado Satisfactorio").located(By.xpath("(//button[@type='button'])[4]"));
-    public static final Target BTN_CARGAR_DOCUMENTO_PADRE= Target.the("Cargar documento permitidio").located(By.xpath("//div[@class='oxd-file-button' and text()='Browse']"));
-    public static final Target BTN_CARGAR_DOCUMENTO= Target.the("Cargar documento permitidio").located(By.xpath("//input[@class='oxd-file-input']"));
+    public static final Target BTN_CARGAR_DOCUMENTO= Target.the("Cargar documento permitidio").located(By.xpath("//input[@type='file']"));
     public static final Target TXT_ENTREVISTA = Target.the("Entrevista").located(By.xpath("(//input[contains(@class, 'oxd-input')])[6]"));
     public static final Target TXT_ENTREVISTADOR = Target.the("Entrevistador").located(By.xpath("//input[@data-v-75e744cd and @include-employees='onlyCurrent' and @placeholder='Type for hints...']"));
     public static final Target TXT_FECHA_ENTREVISTA = Target.the("Fecha").located(By.xpath("(//input[contains(@class, 'oxd-input')])[7]"));
