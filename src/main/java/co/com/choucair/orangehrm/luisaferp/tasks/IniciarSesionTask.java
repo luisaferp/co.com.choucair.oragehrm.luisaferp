@@ -4,8 +4,11 @@ import co.com.choucair.orangehrm.luisaferp.userinterfaces.OrangeHrmPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import java.util.Map;
+
+import static co.com.choucair.orangehrm.luisaferp.userinterfaces.OrangeHrmPage.*;
 import static co.com.choucair.orangehrm.luisaferp.utils.ConstantesDatos.*;
 
 public class IniciarSesionTask implements Task {
@@ -20,8 +23,9 @@ public class IniciarSesionTask implements Task {
     public <T extends Actor> void performAs(T actor) {
 
         actor.attemptsTo(
-                Enter.theValue(testData.get(USUARIO)).into(OrangeHrmPage.TXT_USUARIO),
-                Enter.theValue(testData.get(CONTRASENNA)).into(OrangeHrmPage.TXT_USUARIO)
+                Enter.theValue(testData.get(USUARIO)).into(TXT_USUARIO),
+                Enter.theValue(testData.get(CONTRASENNA)).into(TXT_CONTRASENNA),
+                Click.on(BTN_LOGIN)
         );
     }
 
